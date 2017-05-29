@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+#define MOD 1000000007
+using namespace std;
+vector<pair<long long int,bool> > a;
+long long int fact(long long int N)
+{
+	if(N==0)
+		return 1;
+
+	//cout<<a[N].second<<" ";
+	if(a[N-1].second==false)
+	{
+		a[N-1].second=true;
+		return (a[N-1].first=((N%MOD)*((fact(N-1)%MOD)%MOD)));
+	}
+	else
+		return ((a[N-1].first)%MOD);
+}
+int main()
+{
+	long long int T;
+	cin>>T;
+	long long int N=0;
+	long long int mi=N;
+	while(T--)
+	{
+		cin>>N;
+		if(N>mi)
+		{
+			for(long long int i=mi;i<N;i++)
+				a.push_back(make_pair(1,false));
+			mi=N;
+		}
+		cout<<(fact(N)%MOD)<<endl;
+	}
+}

@@ -1,0 +1,18 @@
+create database institute
+create table departments(dept_id int,dept_name varchar(100) NOT NULL,dept_type varchar(100) CHECK (dept_type='Department' AND dept_type='Center' AND dept_type='School'));
+ALter table departments ADD PRIMARY KEY(dept_type);
+create table courses(course_id int,course_name varchar(100) NOT NULL,credit int NOT NULL,course_type varchar(100) NOT NULL,offered_by_dept varchar(100), CONSTRAINT check_dept CHECK (course_type='THEORY' AND course_type='Lab' AND course_type='Project' AND credit>0 AND credit<15 AND credit>0 AND credit<15));
+ALTER TABLE courses
+ALTER TABLE courses ADD FOREIGN KEY (offered_by_dept) REFERENCES departments(dept_type);
+insert into departments VALUES(1,'MNC','Department');
+insert into departments VALUES(2,'Reliability','Center');
+insert into departments VALUES(3,'Law','School');
+insert into departments VALUES(1,'M','Department');
+insert into departments VALUES(1,'MNC','Department');
+insert into departments VALUES(1,'MA','Department');
+insert into courses VALUES(5,'hola',6,'Theory','Department');
+	insert into courses VALUES(5,'pola',6,'Theory','School');
+		insert into courses VALUES(5,'cola',6,'Theory','Center');
+			insert into courses VALUES(5,'dla',6,'Theory','Department');
+				insert into courses VALUES(5,'mola',6,'Theory','Department');
+
